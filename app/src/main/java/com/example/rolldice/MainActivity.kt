@@ -17,18 +17,20 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
 
         button = findViewById<Button>(R.id.button)
         textView = findViewById<TextView>(R.id.textView)
-
         textView.text = "00"
-        val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
 
         button.setOnClickListener{
-            textView.text = Random.nextInt(range.first, range.last+1).toString()
-            textView.startAnimation(animation)
+            randomNumber()
         }
+    }
+
+    private fun randomNumber(){
+        val animation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        textView.text = Random.nextInt(range.first, range.last+1).toString()
+        textView.startAnimation(animation)
     }
 }
